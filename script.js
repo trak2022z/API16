@@ -1,3 +1,72 @@
+const registerForm = document.querySelector('#register-form');
+const loginForm = document.querySelector('#login-form');
+const messageDiv = document.querySelector('#message');
+
+registerForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  const email = registerForm.elements.email.value;
+  const password = registerForm.elements.password.value;
+  
+  fetch('https://reqres.in/api/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({email, password})
+  })
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error('Registration failed');
+    }
+  })
+  .then(data => {
+    messageDiv.innerHTML = 'Registration successful';
+    messageDiv.classList.remove('error');
+  })
+  .catch(error => {
+    messageDiv.innerHTML = error.message;
+    messageDiv.classList.add('error');
+  });
+});
+
+loginForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  const email = loginForm.elements.email.value;
+  const password = loginForm.elements.password.value;
+  
+  fetch('https://reqres.in/api/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({email, password})
+  })
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error('Login failed');
+    }
+  })
+  .then(data => {
+    messageDiv.innerHTML = 'Login successful';
+    messageDiv.classList.remove('error');
+  })
+  .catch(error => {
+    messageDiv.innerHTML = error.message;
+    messageDiv.classList.add('error');
+  });
+});
+
+
+
+
+
+
 // Get a reference to the form and the output element
       const form = document.getElementById('example-form');
       const output = document.getElementById('api-response');

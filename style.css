@@ -25,3 +25,40 @@ body {
       .output {
         margin-top: 50px;
       }
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1, h2 {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0062cc;
+}
+
+#error-message {
+  color: #dc3545;
+  margin-bottom: 10px;
+}
