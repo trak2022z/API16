@@ -23,8 +23,10 @@ registerForm.addEventListener('submit', (e) => {
     }
   })
   .then(data => {
-    messageDiv.innerHTML = 'Registration successful';
+    const {id, token} = data;
+    messageDiv.innerHTML = `Registration successful. ID: ${id}, Token: ${token}`;
     messageDiv.classList.remove('error');
+  
   })
   .catch(error => {
     messageDiv.innerHTML = error.message;
@@ -53,7 +55,8 @@ loginForm.addEventListener('submit', (e) => {
     }
   })
   .then(data => {
-    messageDiv.innerHTML = 'Login successful';
+    const {token} = data;
+    messageDiv.innerHTML = `Login successful. Token: ${token}`;
     messageDiv.classList.remove('error');
   })
   .catch(error => {
